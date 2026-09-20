@@ -1,16 +1,17 @@
 class Solution {
 public:
     void bfs(int i,vector<int>& visit,vector<vector<int>>& adj){
+        int n=adj.size();
         visit[i]=1;
         queue<int> q;
         q.push(i);
         while(q.size()){
             int front=q.front();
             q.pop();
-            for(auto ele:adj[front]){
-                if(visit[ele]==0) {
-                    visit[ele]=1;
-                    q.push(ele);
+            for(int j=0;j<adj[front].size();j++){
+                if(visit[adj[front][j]]==0) {
+                    visit[adj[front][j]]=1;
+                    q.push(adj[front][j]);
                 }
             }
         }

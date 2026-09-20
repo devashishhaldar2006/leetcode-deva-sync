@@ -1,17 +1,16 @@
 class Solution {
 public:
     void bfs(int i,vector<int>& visit,vector<vector<int>>& rooms){
-        int n=rooms.size();
         visit[i]=1;
         queue<int> q;
         q.push(i);
         while(q.size()){
             int front=q.front();
             q.pop();
-            for(auto ele:rooms[front]){
-                if(visit[ele]==0){
-                    visit[ele]=1;
-                    q.push(ele);
+            for(int j=0;j<rooms[front].size();j++){
+                if(visit[rooms[front][j]]==0){
+                    visit[rooms[front][j]]=1;
+                    q.push(rooms[front][j]);
                 }
             }
         }

@@ -36,6 +36,7 @@ public:
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(grid[i][j]=='1' and visit[i][j]==0){
+                    visit[i][j]=1;
                     dfs(i,j,grid,visit);
                     cnt++;
                 }

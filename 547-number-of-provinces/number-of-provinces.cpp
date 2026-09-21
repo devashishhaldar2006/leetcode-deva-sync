@@ -1,18 +1,11 @@
 class Solution {
 public:
-    void bfs(int i,vector<int>& visit,vector<vector<int>>& adj){
-        int n=adj.size();
-        queue<int> q;
-        q.push(i);
+    void dfs(int i,vector<vector<int>>& adj,vector<int>& visit){
         visit[i]=1;
-        while(q.size()){
-            int front=q.front();
-            q.pop();
-            for(int j=0;j<n;j++){
-                if(adj[front][j]==1 and visit[j]==0){
-                    visit[j]=1;
-                    q.push(j);
-                }
+        int n=adj.size();
+        for(int j=0;j<n;j++){
+            if(visit[j]==0 and adj[i][j]==1){
+                dfs(j,adj,visit);
             }
         }
     }
@@ -22,7 +15,7 @@ public:
         int cnt=0;
         for(int i=0;i<n;i++){
             if(visit[i]==0){
-                bfs(i,visit,adj);
+                dfs(i,adj,visit);
                 cnt++;
             }
         }

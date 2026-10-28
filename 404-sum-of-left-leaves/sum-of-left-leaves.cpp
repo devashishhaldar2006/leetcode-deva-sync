@@ -3,8 +3,10 @@ public:
     int sum;
     void helper(TreeNode* root,int flag){
         if(!root) return;
-        if(!root->left and 
-        !root->right and !flag) sum+=root->val;
+        if(!root->left and !root->right and !flag) {
+            sum+=root->val;
+            return;
+        }
         helper(root->left,0);
         helper(root->right,1);
         return;
@@ -13,8 +15,6 @@ public:
         if(!root) return 0;
         sum=0;
         helper(root,-1);
-        helper(root->left,0);
-        helper(root->right,1);
-        return sum/2;
+        return sum;
     }
 };

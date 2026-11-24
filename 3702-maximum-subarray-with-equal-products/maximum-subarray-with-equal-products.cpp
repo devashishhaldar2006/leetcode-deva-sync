@@ -10,6 +10,7 @@ public:
             int g=nums[i];
             int l=nums[i];
             for(int j=i;j<n;j++){
+                if(curr>LLONG_MAX/nums[j]) break;
                 curr*=(ll)nums[j];
                 g=gcd(g,nums[j]);
                 l=lcm(l,nums[j]);
@@ -17,7 +18,7 @@ public:
                 if((ll)curr==(ll)l*g){
                     maxLen=max(maxLen,len);
                 }
-                if (curr > 25200) break;
+                
             }
            
         }
